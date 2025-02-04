@@ -1,12 +1,12 @@
 import XCTest
 @testable import PHTextEditor
+import SwiftUI
 
 final class PHTextEditorTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    @MainActor func testExample() throws {
+        let text = Binding.constant("")
+        let view = PHTextEditor(placeholder: "Enter text...", text: text)
+        
+        XCTAssertNotNil(view)
     }
 }

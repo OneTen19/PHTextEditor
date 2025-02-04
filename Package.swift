@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "PHTextEditor",
+    platforms: [.iOS(.v15), .macOS(.v11)], // SwiftUI 지원을 위한 최소 버전 지정
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -22,4 +23,3 @@ let package = Package(
         ),
     ]
 )
-
