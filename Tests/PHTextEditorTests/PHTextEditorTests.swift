@@ -11,7 +11,8 @@ final class PHTextEditorTests: XCTestCase {
                 placeholderColor: .blue,
                 border: .red,
                 borderWidth: 1,
-                borderRadius: 12
+                borderRadius: 12,
+                textPadding: EdgeInsets(top: 10, leading: 100, bottom: 10, trailing: 10)
             )
         
         XCTAssertNotNil(view)

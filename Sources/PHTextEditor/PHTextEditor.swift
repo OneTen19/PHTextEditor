@@ -15,6 +15,8 @@ public struct PHTextEditor: View {
     private var borderWidth: CGFloat = 1
     private var borderRadius: CGFloat = 0
     
+    private var textPadding: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+    
     public init(placeholder: String, text: Binding<String>) {
         self._text = text
         self.placeholder = placeholder
@@ -36,6 +38,7 @@ public struct PHTextEditor: View {
                     .padding(.vertical, 8)
             }
         }
+        .padding(textPadding)
         .overlay {
             border == .clear ? nil
             : RoundedRectangle(cornerRadius: borderRadius)
@@ -51,7 +54,8 @@ extension PHTextEditor {
         placeholderColor: Color? = nil,
         border: Color? = nil,
         borderWidth: CGFloat? = nil,
-        borderRadius: CGFloat? = nil
+        borderRadius: CGFloat? = nil,
+        textPadding: EdgeInsets? = nil
     ) -> PHTextEditor {
         var modifiedView = self
         
@@ -73,6 +77,10 @@ extension PHTextEditor {
         
         if let borderRadius = borderRadius {
             modifiedView.borderRadius = borderRadius
+        }
+        
+        if let textPadding = textPadding {
+            modifiedView.textPadding = textPadding
         }
         
         return modifiedView
