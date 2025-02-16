@@ -8,10 +8,9 @@ public struct PHTextEditor: View {
     private var placeholder: String
     private var maxLength: Int? = nil
     
-    public init(placeholder: String, text: Binding<String>, maxLength: Int? = nil) {
+    public init(placeholder: String, text: Binding<String>) {
         self._text = text
         self.placeholder = placeholder
-        self.maxLength = maxLength
     }
     
     public var body: some View {
@@ -29,5 +28,14 @@ public struct PHTextEditor: View {
                     .padding(.vertical, 8)
             }
         }
+    }
+    
+}
+
+extension PHTextEditor {
+    func maxLength(_ length: Int) -> some View {
+        var modifiedView = self
+        modifiedView.maxLength = length
+        return modifiedView
     }
 }
