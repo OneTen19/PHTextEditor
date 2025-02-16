@@ -6,6 +6,13 @@ final class PHTextEditorTests: XCTestCase {
     @MainActor func testExample() throws {
         let text = Binding.constant("")
         let view = PHTextEditor(placeholder: "Enter text...", text: text)
+            .configure(
+                maxLength: 5,
+                placeholderColor: .blue,
+                border: .red,
+                borderWidth: 1,
+                borderRadius: 12
+            )
         
         XCTAssertNotNil(view)
     }
