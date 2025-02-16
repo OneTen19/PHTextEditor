@@ -5,7 +5,8 @@ import SwiftUI
 final class PHTextEditorTests: XCTestCase {
     @MainActor func testExample() throws {
         let text = Binding.constant("")
-        let view = PHTextEditor(placeholder: "Enter text...", text: text).maxLength(5)
+        let view = PHTextEditor(placeholder: "Enter text...", text: text)
+            .configure(maxLength: 5, placeholderColor: .gray)
         
         XCTAssertNotNil(view)
     }

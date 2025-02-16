@@ -7,6 +7,7 @@ public struct PHTextEditor: View {
     @Binding private var text: String
     private var placeholder: String
     private var maxLength: Int? = nil
+    private var placeholderColor: Color = .gray.opacity(0.6)
     
     public init(placeholder: String, text: Binding<String>) {
         self._text = text
@@ -24,6 +25,7 @@ public struct PHTextEditor: View {
             
             if text.isEmpty {
                 Text(placeholder)
+                    .foregroundStyle(placeholderColor)
                     .padding(.horizontal, 5)
                     .padding(.vertical, 8)
             }
@@ -33,9 +35,18 @@ public struct PHTextEditor: View {
 }
 
 extension PHTextEditor {
-    func maxLength(_ length: Int) -> some View {
+    func configure(maxLength: Int? = nil, placeholderColor: Color? = nil) -> some View {
         var modifiedView = self
-        modifiedView.maxLength = length
+        
+        if let maxLength = maxLength {
+            modifiedView.maxLength = maxLength
+        }
+        
+        if let placeholderColor = placeholderColor {
+            modifiedView.placeholderColor = placeholderColor
+        }
+        
         return modifiedView
     }
 }
+
