@@ -46,13 +46,13 @@ public struct PHTextEditor: View {
 }
 
 extension PHTextEditor {
-    func configure(
+    public func configure(
         maxLength: Int? = nil,
         placeholderColor: Color? = nil,
         border: Color? = nil,
         borderWidth: CGFloat? = nil,
         borderRadius: CGFloat? = nil
-    ) -> some View {
+    ) -> PHTextEditor {
         var modifiedView = self
         
         if let maxLength = maxLength {
