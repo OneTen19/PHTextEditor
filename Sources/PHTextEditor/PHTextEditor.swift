@@ -6,15 +6,22 @@ import SwiftUI
 public struct PHTextEditor: View {
     @Binding private var text: String
     private var placeholder: String
+    private var maxLength: Int? = nil
     
-    public init(placeholder: String, text: Binding<String>) {
+    public init(placeholder: String, text: Binding<String>, maxLength: Int? = nil) {
         self._text = text
         self.placeholder = placeholder
+        self.maxLength = maxLength
     }
     
     public var body: some View {
         ZStack(alignment: .topLeading){
             TextEditor(text: $text)
+                .onChange(of: text) { newValue in
+                    if let maxLength, newValue.count > maxLength {
+                        text = String(newValue.prefix(maxLength))
+                    }
+                }
             
             if text.isEmpty {
                 Text(placeholder)
